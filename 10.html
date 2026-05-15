@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DuoVolt</title>
+
+<style>
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#020817;
+  color:white;
+}
+
+/* NAVBAR */
+
+.navbar{
+  position:absolute;
+  top:0;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:25px 50px;
+  box-sizing:border-box;
+  z-index:100;
+}
+
+.logo img{
+  height:55px;
+}
+
+.menu{
+  display:flex;
+  gap:45px;
+}
+
+.menu a{
+  text-decoration:none;
+  color:white;
+  font-size:15px;
+  font-weight:500;
+  transition:.3s;
+}
+
+.menu a:hover{
+  color:#5fd13f;
+}
+
+.btn-nav{
+  background:#57c33d;
+  color:white;
+  padding:16px 28px;
+  border-radius:10px;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:600;
+  transition:.3s;
+}
+
+.btn-nav:hover{
+  background:#4cad36;
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  background:
+  linear-gradient(to right,
+  rgba(0,0,0,.92) 20%,
+  rgba(0,0,0,.55) 50%,
+  rgba(0,0,0,.25) 100%),
+
+  url('https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1974&auto=format&fit=crop');
+
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  padding:130px 80px 80px;
+  box-sizing:border-box;
+}
+
+.hero-content{
+  max-width:540px;
+}
+
+.hero h1{
+  font-size:32px;
+  line-height:1.15;
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+.verde{
+  color:#5fd13f;
+}
+
+.hero p{
+  font-size:15px;
+  line-height:1.6;
+  color:#d1d5db;
+  margin-bottom:35px;
+}
+
+.btn{
+  display:inline-block;
+  background:#57c33d;
+  color:white;
+  text-decoration:none;
+  padding:18px 34px;
+  border-radius:10px;
+  font-size:15px;
+  font-weight:600;
+  transition:.3s;
+}
+
+.btn:hover{
+  background:#4cad36;
+}
+
+/* FEATURES */
+
+.features{
+  display:flex;
+  gap:50px;
+  margin-top:50px;
+}
+
+.features div{
+  position:relative;
+}
+
+.features div:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  right:-25px;
+  top:10px;
+  width:1px;
+  height:70px;
+  background:rgba(255,255,255,.25);
+}
+
+.features img{
+  width:42px;
+  margin-bottom:12px;
+  filter:brightness(0) saturate(100%) invert(74%) sepia(51%) saturate(641%) hue-rotate(57deg);
+}
+
+.features p{
+  font-size:14px;
+  line-height:1.4;
+  color:white;
+  max-width:120px;
+}
+
+/* SOLUCIONES */
+
+.soluciones{
+  background:#020817;
+  padding:90px 50px;
+  text-align:center;
+}
+
+.soluciones h3{
+  color:#5fd13f;
+  font-size:16px;
+  letter-spacing:1px;
+  margin-bottom:15px;
+}
+
+.soluciones h2{
+  font-size:22px;
+  margin-bottom:15px;
+}
+
+.soluciones .texto{
+  color:#cbd5e1;
+  font-size:15px;
+  margin-bottom:60px;
+}
+
+/* CARDS */
+
+.cards{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  flex-wrap:wrap;
+}
+
+.card{
+  width:300px;
+  background:#07101f;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:20px;
+  overflow:hidden;
+  text-align:left;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:#5fd13f;
+  box-shadow:0 0 25px rgba(95,209,63,.25);
+}
+
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.card-content{
+  padding:25px;
+}
+
+.card-content h3{
+  font-size:17px;
+  margin-bottom:15px;
+}
+
+.linea{
+  width:45px;
+  height:3px;
+  background:#5fd13f;
+  border-radius:10px;
+  margin-bottom:18px;
+}
+
+.card-content p{
+  font-size:14px;
+  color:#d1d5db;
+  line-height:1.6;
+  margin-bottom:25px;
+}
+
+.lista{
+  list-style:none;
+  padding:0;
+  margin:0 0 25px;
+}
+
+.lista li{
+  margin-bottom:12px;
+  color:#e5e7eb;
+  font-size:14px;
+}
+
+.lista li::before{
+  content:"✔";
+  color:#5fd13f;
+  margin-right:10px;
+}
+
+.link{
+  color:#5fd13f;
+  text-decoration:none;
+  font-weight:600;
+  font-size:15px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+  .navbar{
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .menu{
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .hero{
+    padding:180px 25px 80px;
+    text-align:center;
+  }
+
+  .hero-content{
+    max-width:100%;
+  }
+
+  .hero h1{
+    font-size:24px;
+  }
+
+  .hero p{
+    font-size:14px;
+  }
+
+  .features{
+    flex-direction:column;
+    align-items:center;
+    gap:30px;
+  }
+
+  .features div::after{
+    display:none;
+  }
+
+  .cards{
+    flex-direction:column;
+    align-items:center;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+  <div class="logo">
+    <img src="logo.png" alt="DuoVolt">
+  </div>
+
+  <div class="menu">
+    <a href="#">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#">Proyectos</a>
+    <a href="#">Nosotros</a>
+    <a href="#">Contacto</a>
+  </div>
+
+  <a class="btn-nav" href="https://wa.me/573208513309" target="_blank">
+    Cotizar mi proyecto →
+  </a>
+
+</div>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <h1>
+      Energía <span class="verde">solar</span>,
+      movilidad <span class="verde">eléctrica</span>
+      e <span class="verde">inversión</span>
+      para reducir costos y generar valor
+    </h1>
+
+    <p>
+      Acompañamos proyectos residenciales, comerciales y de gran escala,
+      optimizando costos y maximizando beneficios.
+    </p>
+
+    <a class="btn" href="#servicios">
+      Empecemos →
+    </a>
+
+    <div class="features">
+
+    <div>
+      <img src="https://cdn-icons-png.flaticon.com/128/14026/14026846.png">
+      <p>Ahorro desde el primer mes</p>
+    </div>
+
+    <div>
+      <img src="https://cdn-icons-png.flaticon.com/128/5404/5404805.png">
+      <p>Acompañamiento completo</p>
+    </div>
+
+    <div>
+      <img src="https://cdn-icons-png.flaticon.com/128/16209/16209795.png">
+      <p>Beneficios tributarios</p>
+    </div>
+
+</div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- SOLUCIONES -->
+
+<section class="soluciones" id="servicios">
+
+  <h3>NUESTRAS SOLUCIONES</h3>
+
+  <h2>
+    Servicios que transforman tu energía
+  </h2>
+
+  <p class="texto">
+    Tecnología, eficiencia y desarrollo energético en un solo lugar.
+  </p>
+
+  <div class="cards">
+
+    <!-- CARD 1 -->
+
+    <div class="card">
+
+      <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1974&auto=format&fit=crop">
+
+      <div class="card-content">
+
+        <h3>Energía Solar</h3>
+
+        <div class="linea"></div>
+
+        <p>
+          Reduce tu factura hasta llegar a 0
+          o generar excedentes de energía.
+        </p>
+
+        <ul class="lista">
+          <li>Hogares</li>
+          <li>Conjuntos residenciales</li>
+          <li>Comercios</li>
+        </ul>
+
+        <a href="#" class="link">
+          Conocer más →
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- CARD 2 -->
+
+    <div class="card">
+
+      <img src="https://images.unsplash.com/photo-1593941707882-a5bac6861d75?q=80&w=1974&auto=format&fit=crop">
+
+      <div class="card-content">
+
+        <h3>Movilidad Eléctrica</h3>
+
+        <div class="linea"></div>
+
+        <p>
+          Infraestructura de carga para
+          hogares, empresas y parqueaderos.
+        </p>
+
+        <ul class="lista">
+          <li>Cargadores residenciales</li>
+          <li>Cargadores inteligentes</li>
+          <li>Gestión y monitoreo</li>
+        </ul>
+
+        <a href="#" class="link">
+          Conocer más →
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- CARD 3 -->
+
+    <div class="card">
+
+      <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1911&auto=format&fit=crop">
+
+      <div class="card-content">
+
+        <h3>Beneficios Tributarios</h3>
+
+        <div class="linea"></div>
+
+        <p>
+          Optimiza tu inversión con incentivos
+          y deducciones energéticas.
+        </p>
+
+        <ul class="lista">
+          <li>Incentivos fiscales</li>
+          <li>Deducciones de renta</li>
+          <li>Asesoría especializada</li>
+        </ul>
+
+        <a href="#" class="link">
+          Conocer más →
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- CARD 4 -->
+
+    <div class="card">
+
+      <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=1974&auto=format&fit=crop">
+
+      <div class="card-content">
+
+        <h3>Generación a Gran Escala</h3>
+
+        <div class="linea"></div>
+
+        <p>
+          Desarrollo de proyectos energéticos
+          desde 2 hectáreas.
+        </p>
+
+        <ul class="lista">
+          <li>Proyectos utility scale</li>
+          <li>Estructuración y desarrollo</li>
+          <li>EPC y operación</li>
+        </ul>
+
+        <a href="#" class="link">
+          Conocer más →
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</body>
+</html>
